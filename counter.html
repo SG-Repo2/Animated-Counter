@@ -1,0 +1,26 @@
+"<div style="font-family: Arial, sans-serif; display: flex; height: 100vh; align-items: center; justify-content: center; background-color: #f4f4f4;">
+    <div class="counter" id="counter" style="font-size: 2em; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">0000000</div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const finalNumber = 134300220020;
+        const duration = 5000;  // Animation duration in milliseconds
+        const stepTime = 10;    // Time between increments
+        const element = document.getElementById("counter");
+
+        let currentNumber = 0;
+        const increment = Math.floor(finalNumber / (duration / stepTime));
+
+        const updateCounter = () => {
+            currentNumber += increment;
+            if (currentNumber >= finalNumber) {
+                currentNumber = finalNumber;
+                clearInterval(interval);
+            }
+            element.textContent = String(currentNumber).padStart(12, '0');
+        }
+
+        const interval = setInterval(updateCounter, stepTime);
+    });
+</script>
